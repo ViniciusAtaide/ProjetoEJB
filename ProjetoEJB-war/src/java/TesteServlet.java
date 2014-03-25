@@ -33,7 +33,6 @@ public class TesteServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String acao = request.getParameter("acao");
-        System.out.println("acao: " +acao);
         try {
             if(acao.equals("remove")) {
                 System.out.println(request.getParameter("id"));
@@ -41,7 +40,7 @@ public class TesteServlet extends HttpServlet {
                 clienteFacade.remove(c);
             }
         } catch (NullPointerException e) {
-            clienteFacade.create(new Cliente());    
+            clienteFacade.create(new Cliente("vinicius", 0, "viniciusataid@gmail.com"));
         } finally {
             request.setAttribute("clientes", clienteFacade.findAll());
             request.getRequestDispatcher("index.jsp").forward(request, response);

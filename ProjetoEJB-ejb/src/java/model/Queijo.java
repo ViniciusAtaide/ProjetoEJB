@@ -23,6 +23,15 @@ public class Queijo extends Produto implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    public Queijo(double preco, double precoterc, String tipo, String nome) {
+        super(preco, precoterc, tipo, nome);
+    }
+
+    public Queijo() {
+        super();
+    }
+
+    
     public Long getId() {
         return id;
     }

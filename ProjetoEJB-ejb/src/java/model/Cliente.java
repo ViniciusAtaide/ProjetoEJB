@@ -1,21 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-/**
- *
- * @author Vinicius
- */
+
 @Entity
 public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -23,6 +17,53 @@ public class Cliente implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String nome;
+    private int pagamento;
+    private String email;
+    @OneToMany(mappedBy = "cliente")
+    private List<Venda> vendas;
+
+    public List<Venda> getVendas() {
+        return vendas;
+    }
+
+    public void setVendas(List<Venda> vendas) {
+        this.vendas = vendas;
+    }
+
+    public Cliente() {}
+    
+    public Cliente(String nome, int pagamento, String email) {
+        this.nome = nome;
+        this.pagamento = pagamento;
+        this.email = email;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(int pagamento) {
+        this.pagamento = pagamento;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    
     public Long getId() {
         return id;
     }

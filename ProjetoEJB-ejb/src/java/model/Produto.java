@@ -11,11 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-/**
- *
- * @author Vinicius
- */
 @Entity
 public class Produto implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -23,6 +20,65 @@ public class Produto implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private double preco;
+    private double precoterc;
+    private String tipo;
+    private String nome;
+    private static int quantidade;
+    
+    @ManyToOne
+    private Venda venda;
+
+    public Produto() {
+    }
+
+    public Produto(double preco, double precoterc, String tipo, String nome) {
+        this.preco = preco;
+        this.precoterc = precoterc;
+        this.tipo = tipo;
+        this.nome = nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public double getPrecoterc() {
+        return precoterc;
+    }
+
+    public void setPrecoterc(double precoterc) {
+        this.precoterc = precoterc;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public static int getQuantidade() {
+        return quantidade;
+    }
+
+    public static void setQuantidade(int quantidade) {
+        Produto.quantidade = quantidade;
+    }
+    
     public Long getId() {
         return id;
     }

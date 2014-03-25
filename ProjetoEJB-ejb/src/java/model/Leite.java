@@ -23,6 +23,14 @@ public class Leite extends Produto implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    public Leite() {
+        super();
+    }
+
+    public Leite(double preco, double precoterc, String tipo, String nome) {
+        super(preco, precoterc, tipo, nome);
+    }
+    
     public Long getId() {
         return id;
     }
